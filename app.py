@@ -24,12 +24,17 @@ def home():
             return redirect(request.url)
         
         if file:
+            transcript=[] 
             recognizer = sr.Recognizer()
             audioFile = sr.AudioFile(file)
             with audioFile as source:
                 data = recognizer.record(source)
-            transcript = recognizer.recognize_google(data,key=None)
-        
+                try:    
+                    transcript.append(recognizer.recognize_google(data,key=None,show_all=True))
+                except Exception as e :
+                    print(e)
+            holder = round(transcript[0]["alternative"][0]['confidence'] * 100 *100)/100/100
+            transcript[0]["alternative"][0]['confidence'] = holder
 
     return render_template("home.html",transcript=transcript)
 

@@ -19,7 +19,8 @@
     {% if transcript :%}
     <div id="speechTranscriptContainer">
         <h1>Transcript</h1>
-        <p class="speech">{{transcript}}</p>
+        <p class="speech">{{transcript[0]["alternative"][0]['transcript']}}</p>
+        <p><strong>Accuracy</strong>:{{transcript[0]["alternative"][0]['confidence']*100}} %</p>
     </div>
     {% endif%}
 {% endblock %}
