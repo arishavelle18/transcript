@@ -1,26 +1,26 @@
-{% extends "layouts.html"%}
+{% extends "layouts.html"%} {% block body %}
 
+<div class="speechContainer">
+  <div>
+    <h1>Upload new File</h1>
+    <form action="" enctype="multipart/form-data" method="POST">
+      <div>
+        <input type="file" name="file" />
+      </div>
+      <div>
+        <input type="submit" class="btn" value="Transcribe" />
+      </div>
+    </form>
+  </div>
+</div>
 
-{% block body %}
-
-    <div class="speechContainer">
-        <h1>Upload new File</h1>
-        <form action="" enctype="multipart/form-data" method="POST">
-            <div>
-                <input type="file" name="file">
-            </div>
-            <div>
-                <input type="submit" class = "btn" value="Transcribe">
-            </div>
-           
-        </form>
-    </div>
-
-    {% if transcript :%}
-    <div id="speechTranscriptContainer">
-        <h1>Transcript</h1>
-        <p class="speech">{{transcript[0]["alternative"][0]['transcript']}}</p>
-        <p><strong>Accuracy</strong>:{{transcript[0]["alternative"][0]['confidence']*100}} %</p>
-    </div>
-    {% endif%}
-{% endblock %}
+{% if transcript :%}
+<div id="speechTranscriptContainer">
+  <h1>Transcript</h1>
+  <p class="speech">{{transcript[0]["alternative"][0]['transcript']}}</p>
+  <p>
+    <strong>Accuracy</strong
+    >:{{transcript[0]["alternative"][0]['confidence']*100}} %
+  </p>
+</div>
+{% endif%} {% endblock %}
